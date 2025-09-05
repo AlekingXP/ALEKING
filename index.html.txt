@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carta para ti ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .carta {
+      width: 350px;
+      height: 250px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      padding: 30px;
+      animation: aparecer 1.5s ease;
+    }
+
+    .carta h1 {
+      color: #ff3366;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    /* Ojitos */
+    .ojos {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      cursor: pointer;
+    }
+
+    .ojo {
+      width: 50px;
+      height: 50px;
+      background: #fff;
+      border: 3px solid #000;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pupila {
+      width: 20px;
+      height: 20px;
+      background: #000;
+      border-radius: 50%;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      transition: all 0.2s ease;
+    }
+
+    @keyframes aparecer {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="carta">
+    <h1>Solo para ti mi amor 💖</h1>
+    <p>Tócame los ojitos 👇</p>
+    <div class="ojos" onclick="abrirSorpresa()">
+      <div class="ojo"><div class="pupila"></div></div>
+      <div class="ojo"><div class="pupila"></div></div>
+    </div>
+  </div>
+
+  <script>
+    // Pupilas siguen al mouse
+    document.addEventListener("mousemove", (e) => {
+      const ojos = document.querySelectorAll(".ojo");
+      ojos.forEach(ojo => {
+        const pupila = ojo.querySelector(".pupila");
+        const rect = ojo.getBoundingClientRect();
+        const x = e.clientX - (rect.left + rect.width / 2);
+        const y = e.clientY - (rect.top + rect.height / 2);
+        const angle = Math.atan2(y, x);
+        const distancia = Math.min(rect.width / 4, Math.hypot(x, y) / 10);
+        const pupilaX = Math.cos(angle) * distancia;
+        const pupilaY = Math.sin(angle) * distancia;
+        pupila.style.transform = `translate(${pupilaX}px, ${pupilaY}px)`;
+      });
+    });
+
+    // Cuando hace clic en los ojitos cambia de página
+    function abrirSorpresa() {
+      window.location.href = "sorpresa.html"; // Redirige a otra carta
+    }
+  </script>
+</body>
+</html>
