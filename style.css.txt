@@ -1,0 +1,157 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(180deg, #1a0025, #3b003b);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+}
+
+.container {
+  text-align: center;
+  z-index: 2;
+}
+
+.msg {
+  margin-top: 20px;
+  opacity: 0.8;
+}
+
+/* Corazón lleno */
+.heart {
+  width: 120px;
+  height: 120px;
+  background: red;
+  position: relative;
+  transform: rotate(-45deg);
+  margin: 0 auto 40px;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  width: 120px;
+  height: 120px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart::before {
+  top: -60px;
+  left: 0;
+}
+
+.heart::after {
+  left: 60px;
+  top: 0;
+}
+
+/* Animación latido */
+@keyframes pulse {
+  0%, 100% { transform: rotate(-45deg) scale(1); }
+  50% { transform: rotate(-45deg) scale(1.1); }
+}
+
+/* Corazón roto */
+.broken-heart {
+  position: relative;
+  width: 150px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.half {
+  width: 75px;
+  height: 120px;
+  background: red;
+  position: absolute;
+  top: 0;
+  transition: transform 0.6s ease;
+}
+
+.left {
+  left: 0;
+  border-top-left-radius: 75px;
+  border-bottom-left-radius: 75px;
+  transform: translateX(-40px) rotate(-15deg);
+}
+
+.right {
+  right: 0;
+  border-top-right-radius: 75px;
+  border-bottom-right-radius: 75px;
+  transform: translateX(40px) rotate(15deg);
+}
+
+/* Carta modal */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter {
+  background: #fff;
+  color: #000;
+  padding: 20px;
+  border-radius: 20px;
+  max-width: 500px;
+  text-align: center;
+  animation: open 1s ease forwards;
+}
+
+@keyframes open {
+  0% { transform: scale(0.5) rotateX(90deg); opacity: 0; }
+  100% { transform: scale(1) rotateX(0); opacity: 1; }
+}
+
+.photo img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+#closeBtn {
+  background: red;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Lluvia */
+#rain {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.drop {
+  position: absolute;
+  font-size: 24px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
