@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             loveNotes.classList.add('show-notes');
             // Cambiar la imagen al centro
-            centerImage.src = 'tu-imagen-aqui.jpg'; // Ruta de la imagen que subas
-        }, 1000); // Espera para la animación de los corazones antes de mostrar las cartas
+            centerImage.src = 'tu-aqui.jpg'; // 
+        }, 1000); // 
     });
 });
+
