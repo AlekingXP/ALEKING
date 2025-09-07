@@ -1,19 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let heartLeft = document.querySelector('.heart-left');
-    let heartRight = document.querySelector('.heart-right');
-    let poemContainer = document.querySelector('.poem-container');
-    let tulips = document.querySelector('.tulips');
-    
-    // Anima el corazón
-    setTimeout(() => {
-        heartLeft.style.transform = "rotate(0deg)";
-        heartRight.style.transform = "rotate(0deg)";
-        poemContainer.style.display = "block"; // Muestra el poema
-        tulips.style.display = "block"; // Muestra los tulipanes
-        document.getElementById('poem').textContent = "Poema especial para ti..."; // El poema
-    }, 2000); // El tiempo que tarda en abrirse el corazón
+    const heartTop = document.getElementById('heartTop');
+    const heartBottom = document.getElementById('heartBottom');
+    const loveNotes = document.getElementById('loveNotes');
+    const centerImage = document.getElementById('centerImage'); // Elemento de la imagen
+    const heartWrapper = document.querySelector('.heart-wrapper');
 
-    // Puedes añadir un ramo de tulipanes con una imagen
-    let tulipImage = document.getElementById('tulips-img');
-    tulipImage.src = 'ruta-del-ramo-de-tulipanes.jpg'; // Coloca la imagen correcta aquí
+    // Función para mover los corazones hacia el centro
+    heartTop.addEventListener('click', () => {
+        heartBottom.style.bottom = '50%';  // Juntar los corazones
+        heartTop.style.top = '50%';
+        
+        // Hacer aparecer las cartas de amor
+        setTimeout(() => {
+            loveNotes.classList.add('show-notes');
+            // Cambiar la imagen al centro
+            centerImage.src = 'tu-imagen-aqui.jpg'; // Ruta de la imagen que subas
+        }, 1000); // Espera para la animación de los corazones antes de mostrar las cartas
+    });
 });
