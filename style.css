@@ -1,0 +1,54 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Amatic SC', sans-serif;
+}
+
+.heart-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.heart-left, .heart-right {
+    position: absolute;
+    top: 0;
+    width: 75px;
+    height: 130px;
+    background-color: pink;
+    border-radius: 50%;
+    transform: rotate(-45deg);
+    animation: moveHeart 2s infinite alternate;
+}
+
+.heart-right {
+    left: 75px;
+    transform: rotate(45deg);
+}
+
+.poem-container {
+    display: none;
+    text-align: center;
+    font-size: 2rem;
+    color: #ff007f;
+    padding-top: 20px;
+}
+
+.tulips {
+    display: none;
+    text-align: center;
+    margin-top: 50px;
+}
+
+@keyframes moveHeart {
+    0% {
+        transform: rotate(45deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
