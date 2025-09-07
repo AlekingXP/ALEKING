@@ -1,54 +1,87 @@
 body {
+    background-color: #ffebf0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f1f1f1;
     height: 100vh;
     margin: 0;
-    font-family: 'Amatic SC', sans-serif;
+    font-family: Arial, sans-serif;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path d="M50 0 L61.8 38.2 L100 38.2 L69.1 61.8 L80.9 100 L50 76.4 L19.1 100 L30.9 61.8 L0 38.2 L38.2 38.2 Z" fill="%23ff69b4" opacity="0.1"/></svg>');
+    background-size: 50px 50px;
+    background-repeat: repeat;
+    animation: moveHearts 30s linear infinite; /* Animación de corazones pequeños */
 }
 
-.heart-container {
+@keyframes moveHearts {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 1000px; }
+}
+
+.container {
     position: relative;
-    width: 150px;
-    height: 150px;
+    text-align: center;
 }
 
-.heart-left, .heart-right {
+.heart-wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 30px;
+}
+
+.heart {
     position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #ff69b4;
+    clip-path: polygon(50% 0%, 0% 35%, 0% 100%, 50% 65%, 100% 100%, 100% 35%);
+    cursor: pointer;
+    transition: all 1s ease;
+}
+
+#heartTop {
     top: 0;
-    width: 75px;
-    height: 130px;
-    background-color: pink;
-    border-radius: 50%;
-    transform: rotate(-45deg);
-    animation: moveHeart 2s infinite alternate;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.heart-right {
-    left: 75px;
-    transform: rotate(45deg);
+#heartBottom {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.poem-container {
+.love-notes {
     display: none;
-    text-align: center;
-    font-size: 2rem;
-    color: #ff007f;
-    padding-top: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    gap: 20px;
 }
 
-.tulips {
-    display: none;
-    text-align: center;
-    margin-top: 50px;
+.note {
+    font-size: 3rem;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
 }
 
-@keyframes moveHeart {
-    0% {
-        transform: rotate(45deg);
-    }
-    100% {
-        transform: rotate(0deg);
-    }
+/* Animación de cartas de amor */
+.show-notes .note {
+    opacity: 1;
+}
+
+/* Estilo para la imagen central */
+.center-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.center-image img {
+    width: 150px;  /* Ajusta el tamaño de la imagen según lo que subas */
+    height: auto;
 }
